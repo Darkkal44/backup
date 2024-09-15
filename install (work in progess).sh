@@ -23,7 +23,7 @@ fi
 
 
 # Install base-devel and required packages
-paru -S --noconfirm --needed base-devel qtile python-psutil pywal-git picom dunst zsh starship mpd ncmpcpp playerctl brightnessctl alacritty pfetch htop flameshot thunar roficlip rofi ranger cava pulseaudio pavucontrol neovim vim sddm
+paru -S --noconfirm --needed base-devel qtile python-psutil pywal-git picom dunst zsh starship mpd ncmpcpp playerctl brightnessctl alacritty pfetch htop flameshot thunar roficlip rofi ranger cava neovim vim feh sddm
 
 # Backup and install configuration files 
 echo "Backing up and installing configuration files..."
@@ -55,7 +55,7 @@ backup_and_install ".config/qtile" "./.config/qtile"
 backup_and_install ".config/spicetify" "./.config/spicetify"
 backup_and_install "Wallpaper" "./Wallpaper"
 backup_and_install "Themes" "./Themes"
-cp -R .zshrc ~/
+
 # Choose video driver (requires sudo for installing drivers)
 echo "1) xf86-video-intel 2) xf86-video-amdgpu 3) nvidia 4) Skip"
 read -r -p "Choose your video card driver (default 1): " vid
@@ -77,6 +77,9 @@ echo "Installing Oh My Zsh and plugins..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+cp -R .zshrc ~/
+
 
 # Enable SDDM 
 echo "Enabling SDDM to start on boot..."
